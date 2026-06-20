@@ -1,0 +1,132 @@
+*,
+:after,
+:before,
+::backdrop {
+    box-sizing: border-box;
+    border: 0 solid;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    gap: 16px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 80px;
+    padding: 80px;
+}
+
+.hero h1 {
+    
+    font-size: 56px;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+.hero-right img {
+    border-radius: 12px;
+}
+
+.hero,
+.skills,
+.quote,
+.contact {
+    margin-top: 60px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    width: 100%;
+    max-width: 300px;
+    object-fit: cover;
+
+}
+
+.skill-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+.quote {
+    margin-top: 100px;
+    padding: 80px;
+    max-width: 700px;
+}
+
+.quote em {
+    font-size: 28px;
+
+}
+
+.author {
+    margin-top: 12px;
+}
+
+.skillset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid royalblue 2px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    height: 80px;
+}
+
+.skills {
+    text-align: center;
+}
+
+.skills h2 {
+    margin-bottom: 20px;
+}
+
+.contact {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.contact h2 {
+    margin-bottom: 15px;
+}
+
+header,
+footer {
+    background-color: #1f2937;
+    color: white;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+}
