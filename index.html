@@ -4,47 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Marios Kalantzis | Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
     <header>
         <div class="logo">MK portfolio</div>
-        <nav>
-            <ul>
-                <li><a href="#">hero</a></li>
-                <li><a href="#">skills</a></li>
-                <li><a href="#">contact</a></li>
-                </li>
-            </ul>
-        </nav>
-
+        <div class="header-right">
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="#hero">hero</a></li>
+                    <li><a href="#skills">skills</a></li>
+                    <li><a href="#projects">projects</a></li>
+                    <li><a href="#contact">contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-mobile" id="navMobile">
+                <ul>
+                    <li><a href="#hero">hero</a></li>
+                    <li><a href="#skills">skills</a></li>
+                    <li><a href="#projects">projects</a></li>
+                    <li><a href="#contact">contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero-left">
                 <h1>Hi,I'm Marios Kalantzis</h1>
-                <p> Aspiring Full-Stack Developer.</p>
+                <p><em>
+                        Software Development graduate from IEK Delta with a background in the printing and promotional
+                        products industry. Currently expanding my skills through The Odin Project as I transition into
+                        full-stack web development.</em></p>
 
             </div>
 
             <div class="hero-right">
-                <img src="../img/marios.jpg" alt="Marios Kalantzis">
+                <img src="./img/marios.jpg" alt="Marios Kalantzis">
             </div>
 
         </section>
 
-        <section class="skills">
+        <div class="divider"></div>
+
+        <section class="skills" id="skills" data-aos="fade-up">
             <h2>Skills</h2>
             <div class="skill-container">
-                <div class="skillset">HTML</div>
-                <div class="skillset">CSS</div>
-                <div class="skillset">Future javascript</div>
-                <div class="skillset">Git</div>
+                <div class="skillset">
+                    <i class="fab fa-html5"></i>
+                    <p>HTML</p>
+                </div>
+                <div class="skillset">
+                    <i class="fab fa-css3-alt"></i>
+                    <p>CSS</p>
+                </div>
+                <div class="skillset">
+                    <i class="fab fa-js-square"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="skillset">
+                    <i class="fab fa-git-alt"></i>
+                    <p>Git</p>
+                </div>
+                <div class="skillset">
+                    <i class="fab fa-react"></i>
+                    <p>React</p>
+                </div>
+                <div class="skillset">
+                    <i class="fab fa-node-js"></i>
+                    <p>Node.js</p>
+                </div>
+                <div class="skillset">
+                    <i class="fas fa-cube"></i>
+                    <p>Rest APIs</p>
+                </div>
             </div>
         </section>
+
+        <div class="divider"></div>
+
+        <section class="projects" id="projects" data-aos="fade-up">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Invoice Generator</h3>
+                    <p class="project-description">A React-based invoice generator that allows users to enter client
+                        info and line items to generate and save professional PDF invoices.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">PDF</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/MariosKalantzis/invoice-generator" target="_blank"
+                            class="btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-hand-fist"></i>
+                    </div>
+                    <h3>Rock Paper Scissors</h3>
+                    <p class="project-description">A command-line Rock Paper Scissors game where players compete against
+                        AI with score tracking. Coming soon: GUI version with enhanced visuals.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Game Logic</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/MariosKalantzis/Rock-paper-scissors" target="_blank"
+                            class="btn-github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <section class="quote">
             <strong><em>Every expert was once a beginner. </em></strong>
@@ -55,23 +143,150 @@
 
         </section>
 
-        <section class="contact">
-            <h2> Let's Connect!</h2>
+        <div class="divider"></div>
 
-            <p>
-                Feel free to reach out if you'd like to work together.
-            </p>
-            <ul>
-                <li>Email</li>
-                <li>GitHub</li>
-                <li>LinkedIn</li>
-            </ul>
+        <section class="contact" id="contact" data-aos="fade-up">
+            <h2>Let's Connect!</h2>
+            <p>Feel free to reach out if you'd like to work together.</p>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+                <div id="formMessage" class="form-message"></div>
+            </form>
+
+            <div class="contact-links-alt">
+                <p>Or connect with me on:</p>
+                <div class="social-links">
+                    <a href="https://github.com/MariosKalantzis" target="_blank" class="social-link"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/marios-kalantzis-217847316/" target="_blank"
+                        class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:marios.kalan@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2026 Marios Kalantzis</p>
+        <p>©️ Marios Kalantzis 2026</p>
     </footer>
+
+    <a href="#hero" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    <script>
+        // Initialize AOS (Scroll Animations)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // EmailJS Initialization - only run when a real key is provided
+        const emailPublicKey = 'YOUR_EMAILJS_PUBLIC_KEY';
+        const isEmailJsConfigured = typeof emailjs !== 'undefined' && emailPublicKey && !emailPublicKey.includes('YOUR_');
+
+        if (isEmailJsConfigured) {
+            emailjs.init(emailPublicKey);
+        }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMobile = document.getElementById('navMobile');
+
+        hamburger.addEventListener('click', () => {
+            navMobile.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const mobileLinks = navMobile.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMobile.classList.remove('active');
+            });
+        });
+
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!isEmailJsConfigured) {
+                formMessage.textContent = '✗ Contact form is not configured yet.';
+                formMessage.classList.add('error');
+                return;
+            }
+
+            try {
+                await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+                    from_name: name,
+                    from_email: email,
+                    message: message
+                });
+
+                formMessage.textContent = '✓ Message sent successfully!';
+                formMessage.classList.add('success');
+                contactForm.reset();
+
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                    formMessage.classList.remove('success');
+                }, 5000);
+            } catch (error) {
+                formMessage.textContent = '✗ Failed to send message. Try emailing directly.';
+                formMessage.classList.add('error');
+            }
+        });
+
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        const applyTheme = (theme) => {
+            const isDark = theme === 'dark';
+            document.body.classList.toggle('dark-mode', isDark);
+            htmlElement.classList.toggle('dark-mode', isDark);
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            themeToggle.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem('theme', theme);
+        };
+
+        const savedTheme = localStorage.getItem('theme');
+        const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        applyTheme(savedTheme || preferredTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+            applyTheme(nextTheme);
+        });
+    </script>
 
 </body>
 
