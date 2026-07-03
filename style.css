@@ -48,12 +48,6 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
