@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Impossible Button</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <main class="stage">
+        <header class="intro">
+            <h1 class="title">The Impossible Button</h1>
+            <p class="tagline">Go on. Try to click it. I dare you.</p>
+        </header>
+
+        <!-- Live scoreboard: attempts + an escalating taunt -->
+        <div class="scoreboard" role="status" aria-live="polite">
+            <span class="score">Attempts: <strong id="attempts">0</strong></span>
+            <span class="taunt" id="taunt">It won't bite. Probably.</span>
+        </div>
+
+        <!-- The playground the button is allowed to run around in -->
+        <section class="arena" id="arena">
+            <button id="btn" type="button">Click Me!</button>
+        </section>
+
+        <p class="hint" id="hint">Tip: chase it long enough and it gets tired…</p>
+    </main>
+
+    <!-- Celebration overlay, shown only when the user finally wins -->
+    <div class="win" id="win" hidden>
+        <div class="win__card">
+            <h2>🎉 You caught it! 🎉</h2>
+            <p id="win-text">Took you long enough.</p>
+            <button id="replay" type="button">Play again</button>
+        </div>
+    </div>
+</body>
+
+</html>

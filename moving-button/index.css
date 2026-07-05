@@ -1,0 +1,256 @@
+/* ---------- Theme tokens ---------- */
+:root {
+    --bg-1: #1a1440;
+    --bg-2: #3d1a6b;
+    --bg-3: #0f3460;
+    --accent: #7c5cff;
+    --accent-hot: #ff5c9d;
+    --text: #f3f0ff;
+    --muted: #b9b2e0;
+    --btn: #2d2d2d;
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    /* Animated aurora-style gradient background */
+    background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-1));
+    background-size: 400% 400%;
+    animation: drift 18s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes drift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---------- Layout ---------- */
+.stage {
+    width: min(920px, 100%);
+    text-align: center;
+}
+
+.intro {
+    margin-bottom: 18px;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hot));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.tagline {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+/* ---------- Scoreboard ---------- */
+.scoreboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.score strong {
+    color: var(--accent-hot);
+    font-variant-numeric: tabular-nums;
+}
+
+.taunt {
+    color: var(--muted);
+    font-style: italic;
+    transition: color 0.2s ease;
+}
+
+/* ---------- Arena ---------- */
+.arena {
+    position: relative;
+    height: min(60vh, 460px);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+}
+
+/* ---------- Button ---------- */
+#btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px 28px;
+    border: 0;
+    border-radius: var(--radius);
+    font: inherit;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hot));
+    box-shadow: 0 8px 24px rgba(124, 92, 255, 0.5),
+                0 0 0 rgba(255, 92, 157, 0.6);
+    /* Smooth glide instead of teleporting */
+    transition: left 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                top 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+#btn:hover,
+#btn:focus-visible {
+    box-shadow: 0 10px 30px rgba(255, 92, 157, 0.6),
+                0 0 22px rgba(255, 92, 157, 0.7);
+    outline: none;
+}
+
+#btn:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+/* Little wobble applied via JS while dodging */
+#btn.dodging {
+    animation: wobble 0.4s ease;
+}
+
+@keyframes wobble {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0); }
+    25% { transform: translate(-50%, -50%) rotate(-8deg); }
+    75% { transform: translate(-50%, -50%) rotate(8deg); }
+}
+
+/* Tired state: it gives up and becomes catchable */
+#btn.tired {
+    filter: saturate(0.6) brightness(0.85);
+    transition: left 0.6s ease, top 0.6s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.hint {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* ---------- Emoji burst particles ---------- */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.4rem;
+    user-select: none;
+    animation: burst 0.7s ease-out forwards;
+}
+
+@keyframes burst {
+    from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    to { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.4); }
+}
+
+/* ---------- Win overlay ---------- */
+.win {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 6, 30, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    animation: fade 0.3s ease;
+}
+
+.win[hidden] {
+    display: none;
+}
+
+.win__card {
+    background: linear-gradient(160deg, #241a52, #12102e);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 32px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.win__card h2 {
+    margin: 0 0 8px;
+    font-size: 1.6rem;
+}
+
+.win__card p {
+    margin: 0 0 20px;
+    color: var(--muted);
+}
+
+#replay {
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 12px;
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hot));
+    transition: transform 0.15s ease;
+}
+
+#replay:hover {
+    transform: translateY(-2px);
+}
+
+/* Confetti pieces rained down on win */
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 14px;
+    z-index: 11;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to { transform: translateY(105vh) rotate(720deg); opacity: 0.9; }
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ---------- Respect reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    body { animation: none; }
+    #btn { transition: left 0.05s linear, top 0.05s linear; }
+    #btn.dodging { animation: none; }
+    .particle, .confetti { animation-duration: 0.01s; }
+}
