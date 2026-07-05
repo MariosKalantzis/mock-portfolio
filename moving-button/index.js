@@ -6,6 +6,7 @@
 const DODGE_RADIUS = 120;     // how close (px) the cursor can get before it bolts
 const WIN_ATTEMPTS = 12;      // dodges before the button gives up and is catchable
 const EDGE_PADDING = 12;      // keep this much space from the arena edges
+const DODGE_COOLDOWN = 350;   // min ms between dodges, so one approach = one attempt
 
 // Cheeky labels swapped in as it runs away
 const RUN_WORDS = [
@@ -40,6 +41,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 // ---- State ----
 let attempts = 0;
 let tired = false;
+let lastDodge = 0;            // timestamp of the last dodge, for cooldown throttling
 
 // Clamp a value between a min and max.
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -82,6 +84,12 @@ function emojiBurst(x, y) {
 // The core dodge: leap away from the pointer, clamped inside the arena.
 function dodge(pointerX, pointerY) {
     if (tired) return;
+
+    // pointermove fires many times per sweep — ignore dodges that come in
+    // faster than the cooldown so a single approach only counts as one attempt.
+    const now = performance.now();
+    if (now - lastDodge < DODGE_COOLDOWN) return;
+    lastDodge = now;
 
     const rect = btn.getBoundingClientRect();
     const arenaRect = arena.getBoundingClientRect();
@@ -156,6 +164,7 @@ function win() {
 function reset() {
     attempts = 0;
     tired = false;
+    lastDodge = 0;
     attemptsEl.textContent = "0";
     btn.classList.remove("tired");
     btn.textContent = "Click Me!";
